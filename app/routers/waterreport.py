@@ -12,6 +12,7 @@ WaterLevelRouter = APIRouter(
     tags=['WaterLevel']
 )
 
+
 @WaterLevelRouter.get("/{station_code}",  response_model=List[schemas.WaterLevel], response_model_exclude_none=True)
 def get_WaterLevels(station_code: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user), limit: int = 10, skip: int = 0):
 

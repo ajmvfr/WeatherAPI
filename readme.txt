@@ -77,7 +77,8 @@ github setup
     git config --global user.name ajmvfr
     git commit -m "initial commit"
     git branch -M main
-    git remote add origin https://github.com/ajmvfr/training-fastapi.git
+    git remote add origin https://github.com/ajmvfr/WeatherAPI.git
+    git remote change origin https://github.com/ajmvfr/WeatherAPI.git
     git push -u origin main
 
 setup heroku for deploying api
