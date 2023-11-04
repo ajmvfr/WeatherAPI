@@ -1,3 +1,5 @@
 __pycache__
 venv/
 .env
+weather-api-fastapi.service
+nginx

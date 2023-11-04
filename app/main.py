@@ -23,6 +23,6 @@ app.include_router(waterreport.CurrentWaterReading)
 
 @app.get("/")
 def root():
-    return {"message": f"New API!! {datetime.now()}"}
+    return {"message": f"New API!!! {datetime.now()}"}
 
 

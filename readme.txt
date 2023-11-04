@@ -197,18 +197,18 @@ Digital ocean
             might need additional requirements based on errors
                 pip install httptools
                 pip install uvloop
-        gunicorn  -w 4 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000 
+        gunicorn  -w 1 -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:8000 
         # if it will not start with connect error, 
             sudo fuser -k 8000/tcp
     start the process on reboot and in the background
         cd /etc/systemd/system/
-        sudo vi fastapi.service
+        sudo vi weather-api-fastapi.service
         #paste in code from the ervice file
         To test
-            systemctl start fastapi #or systemctl restart fastapi
-            systemctl status fastapi
+            systemctl start weather-api-fastapi #or systemctl restart weather-api-fastapi
+            systemctl status weather-api-fastapi
         to set to auto restart
-            sudo systemctl enable fastapi
+            sudo systemctl enable weather-api-fastapi
     Configure NGINX to front end the server, works as a proxy to allow the ssl termination, and pass http to app.
         install
             sudo apt install nginx -y
@@ -222,6 +222,10 @@ Digital ocean
             #edit default and load lines in
             sudo vi default
             systemctl restart nginx
+        to look for errors
+            sudo cat /var/log/nginx/error.log
+        verify nginx is will restart on boot
+            systemctl status nginx
     setting up ssl
         got to https://certbot.eff.org/
         #go to certbot instructions
@@ -233,6 +237,9 @@ Digital ocean
             sudo snap install --classic certbot
         #run certbot to congif nginx
             sudo certbot --nginx
+
+        cert created for anthonymorgan.us www.anthonymorgan.us api.anthonymorgan.us
+
     setup firewall
         #will use the builtin firewall called ufw
         #check it
@@ -252,7 +259,7 @@ Pushing changes with github
         #terminal service to vm
         #change dir to source folder
         #restart app
-        sudo systemctl restart fastapi
+        sudo systemctl restart weather-api-fastapi
 Testing tooling
     #search for pytest
     install pytest
