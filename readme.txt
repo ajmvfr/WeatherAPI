@@ -133,7 +133,7 @@ Digital ocean
         adduser ajm
         su - ajm    #to login
     or to login as correct user 
-        ssh ajm@174.138.82.50
+        ssh ajm@138.197.36.167
     give user root permissions
         usermod -aG sudo ajm
     test permission using apt upgrade, it should work
@@ -144,8 +144,8 @@ Digital ocean
         cd ~
         cd /home/ajm
     Install app
-        mkdir fastapi
-        cd fastapi
+        mkdir weather-api-fastapi
+        cd weather-api-fastapi
         virtualenv venv      #make virtual enviroment
         ls -la               #to see folder
         source venv/bin/activate   # to activate enviroment
@@ -153,7 +153,7 @@ Digital ocean
         mkdir src                  # make source directory
         cd src                     # change to dir
     pull code onto vm from github
-        git clone https://github.com/ajmvfr/training-fastapi.git .  #make user of space dot to install in current dir
+        git clone https://github.com/ajmvfr/WeatherAPI.git .  #make user of space dot to install in current dir
     activate code
         cd ..   to get back to root of app
         source venv/bin/activate   # to activate enviroment
