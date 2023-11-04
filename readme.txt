@@ -256,9 +256,10 @@ Pushing changes with github
         git add --all
         git commit -m "New Code to test deploy"
         git push origin main
-        #terminal service to vm
-        #change dir to source folder
-        #restart app
+    #terminal service to vm
+    #change dir to source folder
+        git pull
+    #restart app
         sudo systemctl restart weather-api-fastapi
 Testing tooling
     #search for pytest
