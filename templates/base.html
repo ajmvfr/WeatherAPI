@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+
+    <style>
+      body {background-color: whitesmoke;}
+      h1   {color: blue;}
+      p    {color: red;}
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+</head>
+
+<body>
+    <div style="margin-top: 50px;" class="ui container">
+        <h1 class="ui center aligned header">Weather reports</h1>
+
+        <form class="ui form" action="/uisubmit" method="post">
+          <div class="field">
+              <!-- <label>Station Codes</label>
+              <input type="text" name="stationcode" placeholder="Enter Station Code..."><br> -->
+              <select name="list_station">
+                {% for station in station_list %}
+                <option value="{{station.station_code}}">{{station.station_description}}</option>
+                {% endfor %}
+              </select>
+          </div>
+          <button class="ui blue button" type="submit">Submit</button>
+        </form>
+
+        <!-- <div>
+          <select name="list_station">
+            {% for station in station_list %}
+            <option value="{{station.station_code}}">{{station.station_description}}</option>
+            {% endfor %}
+          </select>
+        </div> -->
+
+        <hr>
+
+        <!-- <table>
+          <tr>
+            <th>Station Code</th>
+            <th>Station Description</th>
+          </tr>
+          {% for station in station_list %}
+          <tr>
+            <td>{{ station.station_code }}</td>
+            <td>{{ station.station_description }}</td>
+          </tr>
+          {% endfor %}
+        </table> -->
+
+        <table>
+            <tr>
+              <th>Station Code</th>
+              <th>Observed Date</th>
+              <th>Water Level</th>
+              <th>Water Flow</th>
+            </tr>
+            {% for level in level_list %}
+            <tr>
+              <td>{{level.station_code }}</td>
+              <td>{{ level.observed_date }}</td>
+              <td>{{ level.water_level }}</td>
+              <td>{{ level.water_flow }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+
+    </div>
+</body>
+
+</html>

@@ -23,6 +23,8 @@ install sql Alchemy
 Install fastapi
     pip install fastapi[all]
 
+install jinja2
+    pip install jinja2
 
 
 Install password hash algorith with bcrypt
@@ -207,6 +209,8 @@ Digital ocean
         To test
             systemctl start weather-api-fastapi #or systemctl restart weather-api-fastapi
             systemctl status weather-api-fastapi
+        to temp stop a service
+            sudo service weather-api-fastapi
         to set to auto restart
             sudo systemctl enable weather-api-fastapi
     Configure NGINX to front end the server, works as a proxy to allow the ssl termination, and pass http to app.

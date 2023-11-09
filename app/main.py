@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from datetime import datetime
-from .routers import user, auth, station, waterreport
+from .routers import user, auth, station, waterreport, ui
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -20,6 +20,8 @@ app.include_router(auth.router)
 app.include_router(waterreport.WaterLevelRouter)
 app.include_router(waterreport.WaterReport)
 app.include_router(waterreport.CurrentWaterReading)
+app.include_router(ui.UiRouter)
+app.include_router(ui.UiSubmitRouter)
 
 @app.get("/")
 def root():
