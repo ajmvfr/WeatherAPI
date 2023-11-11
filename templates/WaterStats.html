@@ -44,18 +44,54 @@
 
         <hr>
 
-        <!-- <table>
-          <tr>
-            <th>Station Code</th>
-            <th>Station Description</th>
-          </tr>
-          {% for station in station_list %}
-          <tr>
-            <td>{{ station.station_code }}</td>
-            <td>{{ station.station_description }}</td>
-          </tr>
-          {% endfor %}
-        </table> -->
+        <br>
+        
+        All time readings from {{water_stats.station_code}}
+        <br>
+        <br>
+        Water Level Readings
+        <table>
+            <tr>
+            </tr>
+            <tr>
+                <td>Min level Reading</td>
+                <td>{{ water_stats.min_water_level_observed_date_alltime }}</td>
+                <td>{{ water_stats.min_water_level_alltime }}{{ water_stats.min_water_level_units_alltime }}</td>
+            </tr>
+            <tr>
+                <td>Current Reading</td>
+                <td>{{ water_stats.current_water_level_observed_date }}</td>
+                <td>{{ water_stats.current_water_level }}{{ water_stats.current_water_level_units }}</td>
+            </tr>
+            <tr>
+                <td>Max level Reading</td>
+                <td>{{ water_stats.max_water_level_observed_date_alltime }}</td>
+                <td>{{ water_stats.max_water_level_alltime }}{{ water_stats.max_water_level_units_alltime }}</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+
+        Water Flow Readings
+        <table>
+            <tr>
+            </tr>
+            <tr>
+                <td>Min level Reading</td>
+                <td>{{ water_stats.min_water_flow_observed_date_alltime }}</td>
+                <td>{{ water_stats.min_water_flow_alltime }}{{ water_stats.min_water_flow_units_alltime }}</td>
+            </tr>
+            <tr>
+                <td>Current Reading</td>
+                <td>{{ water_stats.current_water_level_observed_date }}</td>
+                <td>{{ water_stats.current_water_flow }}{{ water_stats.current_water_flow_units }}</td>
+            </tr>
+            <tr>
+                <td>Max level Reading</td>
+                <td>{{ water_stats.max_water_flow_observed_date_alltime }}</td>
+                <td>{{ water_stats.max_water_flow_alltime }}{{ water_stats.max_water_flow_units_alltime }}</td>
+            </tr>
+        </table>
 
         <!-- <table>
             <tr>

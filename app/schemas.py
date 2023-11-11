@@ -95,3 +95,98 @@ class WaterReport(BaseModel):
 
     class Config:
         from_attributes = True
+
+class WaterStats(BaseModel):
+    station_code: str
+    min_water_level_observed_date_alltime: datetime
+    min_water_level_alltime: Optional[float]
+    min_water_level_units_alltime: Optional[str]
+    max_water_level_observed_date_alltime: datetime
+    max_water_level_alltime: Optional[float]
+    max_water_level_units_alltime: Optional[str]
+    min_water_flow_observed_date_alltime: datetime
+    min_water_flow_alltime: Optional[float]
+    min_water_flow_units_alltime: Optional[str]
+    max_water_flow_observed_date_alltime: datetime
+    max_water_flow_alltime: Optional[float]
+    max_water_flow_units_alltime: Optional[str]
+    max_water_flow_observed_date_alltime: datetime
+    max_water_flow_alltime: Optional[float]
+    max_water_flow_units_alltime: Optional[str]
+    current_water_level_observed_date: datetime
+    current_water_level: Optional[float]
+    current_water_level_units: Optional[str]
+    current_water_flow: Optional[float]
+    current_water_flow_units: Optional[str]    
+
+    class Config:
+        from_attributes = True
+
+    # def __init__(self, 
+    #              station_id: int, 
+    #              station_code: str, 
+    #              min_water_level_observed_date_alltime: datetime,
+    #              min_water_level_alltime: float,
+    #              min_water_level_units_alltime: str,
+    #              max_water_level_observed_date_alltime: datetime,
+    #              max_water_level_alltime: float,
+    #              max_water_level_units_alltime: str,
+    #              min_water_flow_observed_date_alltime: datetime,
+    #              min_water_flow_alltime: float,
+    #              min_water_flow_units_alltime: str,
+    #              max_water_flow_observed_date_alltime: datetime,
+    #              max_water_flow_alltime: float,
+    #              max_water_flow_units_alltime: str,
+    #              current_water_level_observed_date: datetime,
+    #              current_water_level: float,
+    #              current_water_level_units: str,
+    #              current_water_flow: float,
+    #              current_water_flow_units: str):
+
+    #     self.station_id = station_id
+    #     self.station_code = station_code
+    #     self.min_water_level_observed_date_alltime = min_water_level_observed_date_alltime
+    #     self.min_water_level_alltime = min_water_level_alltime
+    #     self.min_water_level_units_alltime = min_water_level_units_alltime
+    #     self.max_water_level_observed_date_alltime = max_water_level_observed_date_alltime
+    #     self.max_water_level_alltime = max_water_level_alltime
+    #     self.max_water_level_units_alltime = max_water_level_units_alltime
+    #     self.min_water_flow_observed_date_alltime = min_water_flow_observed_date_alltime
+    #     self.min_water_flow_alltime = min_water_flow_alltime
+    #     self.min_water_flow_units_alltime = min_water_flow_units_alltime
+    #     self.max_water_flow_observed_date_alltime = max_water_flow_observed_date_alltime
+    #     self.max_water_flow_alltime = max_water_flow_alltime
+    #     self.max_water_flow_units_alltime = max_water_flow_units_alltime
+    #     self.current_water_level_observed_date = current_water_level_observed_date
+    #     self.current_water_level = current_water_level
+    #     self.current_water_level_units = current_water_level_units
+    #     self.current_water_flow = current_water_flow
+    #     self.current_water_flow_units = current_water_flow_units
+    #     # self. = 
+    #     # self. = 
+    #     # self. = 
+
+
+
+    # def __repr__(self):
+    #     return f"{self.__class__.__name__}({self.id}, {self.station_id}, \
+    #     '{self.station_code}', \
+    #     {self.min_water_level_observed_date_alltime}, \
+    #     {self.min_water_level_observed_date_alltime},\
+    #     {self.min_water_level_alltime},\
+    #     {self.min_water_level_units_alltime},\
+    #     {self.max_water_level_observed_date_alltime},\
+    #     {self.max_water_level_alltime},\
+    #     {self.max_water_level_units_alltime},\
+    #     {self.min_water_flow_observed_date_alltime},\
+    #     {self.min_water_flow_alltime},\
+    #     {self.min_water_flow_units_alltime},\
+    #     {self.max_water_flow_observed_date_alltime},\
+    #     {self.max_water_flow_alltime},\
+    #     {self.max_water_flow_units_alltime},\
+    #     {self.current_water_level_observed_date},\
+    #     {self.current_water_level},\
+    #     {self.current_water_level_units},\
+    #     {self.current_water_flow},\
+    #     {self.current_water_flow_units}"
+    

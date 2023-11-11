@@ -4,6 +4,7 @@ from typing import List, Optional
 from ..import models, schemas, oauth2, utilities
 from ..database import get_db
 from sqlalchemy import func
+from ..watercalc import GetWaterReport
 
 
 
@@ -26,6 +27,27 @@ def get_WaterLevels(station_code: str, db: Session = Depends(get_db), current_us
 
     return WaterLevel
 
+
+
+
+CurrentWaterReading = APIRouter(
+    prefix="/CurrentWaterReading",
+    tags=['WaterLevel']
+)
+
+@CurrentWaterReading.get("/{station_code}",  response_model=schemas.WaterLevel, response_model_exclude_none=True)
+def get_CurrentReading(station_code: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+
+    WaterLevel = db.query(models.WaterReport).filter(
+        models.WaterReport.station_code == station_code).order_by(models.WaterReport.published_date.desc()).limit(1).first()
+    # WaterLevel = db.query(models.WaterReport).filter(
+    #     models.WaterReport.id == 1).order_by(models.WaterReport.published_date.desc()).all()
+
+    if not WaterLevel:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"water readings with station code: {station_code} does not exist")
+    
+    return WaterLevel
 
 WaterReport = APIRouter(
     prefix="/WaterReport",
@@ -61,21 +83,19 @@ def get_WaterReport(station_code: str, db: Session = Depends(get_db), current_us
     return WaterReportDict  #WaterReport
 
 
-CurrentWaterReading = APIRouter(
-    prefix="/CurrentWaterReading",
+WaterReport2 = APIRouter(
+    prefix="/WaterReport2",
     tags=['WaterLevel']
 )
 
-@CurrentWaterReading.get("/{station_code}",  response_model=schemas.WaterLevel, response_model_exclude_none=True)
-def get_CurrentReading(station_code: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+@WaterReport2.get("/{station_code}",  response_model=schemas.WaterStats, response_model_exclude_none=True)
+# @WaterReport2.get("/{station_code}")
+def get_WaterReport2(station_code: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 
-    WaterLevel = db.query(models.WaterReport).filter(
-        models.WaterReport.station_code == station_code).order_by(models.WaterReport.published_date.desc()).limit(1).first()
-    # WaterLevel = db.query(models.WaterReport).filter(
-    #     models.WaterReport.id == 1).order_by(models.WaterReport.published_date.desc()).all()
+    waterstats = GetWaterReport(station_code, db)
 
-    if not WaterLevel:
+    if not waterstats:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"water readings with station code: {station_code} does not exist")
-    
-    return WaterLevel
+
+    return waterstats # {"get_WaterReport2": "test"}  #WaterReport

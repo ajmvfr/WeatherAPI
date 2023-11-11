@@ -4,6 +4,7 @@ from typing import List, Optional
 from ..import models, schemas, oauth2, utilities
 from ..database import get_db
 from sqlalchemy import func
+from ..watercalc import GetWaterReport
 
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
@@ -19,14 +20,10 @@ UiRouter = APIRouter(
 @UiRouter.get("/")
 def get_ui(request: Request, db: Session = Depends(get_db)):
 
-    WaterLevel = db.query(models.WaterReport).filter(
-        models.WaterReport.station_code == 'XXXX').order_by(models.WaterReport.published_date.desc()).limit(25).all()
-
-
     stations = db.query(models.Station).order_by(models.Station.id).all()
 
     return templates.TemplateResponse("base.html",
-                                      {"request": request, "level_list": WaterLevel, "station_list": stations })
+                                      {"request": request, "station_list": stations })
 
 
 UiSubmitRouter = APIRouter(
@@ -37,14 +34,12 @@ UiSubmitRouter = APIRouter(
 @UiRouter.get("/{scode}")
 def get_ui(request: Request, scode: str, db: Session = Depends(get_db)):
 
-    WaterLevel = db.query(models.WaterReport).filter(
-        models.WaterReport.station_code == scode).order_by(models.WaterReport.published_date.desc()).limit(25).all()
-    
+    WaterStats = GetWaterReport(scode, db)
 
     stations = db.query(models.Station).order_by(models.Station.id).all()
 
-    return templates.TemplateResponse("base.html",
-                                      {"request": request, "level_list": WaterLevel, "station_list": stations })
+    return templates.TemplateResponse("WaterStats.html",
+                                      {"request": request, "water_stats": WaterStats, "station_list": stations })
 
 
 UiSubmitRouter = APIRouter(
@@ -60,6 +55,3 @@ def submit(request: Request, list_station: str = Form(...)):
     url = UiRouter.url_path_for("get_ui") + list_station
 
     return RedirectResponse(url=url, status_code=status.HTTP_302_FOUND)
-
- 
-        # </select><button class="ui blue button" type="Find">Find</button>
