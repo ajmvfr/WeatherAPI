@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo App</title>
+    <title>Anthony's Water Level Page</title>
 
     <style>
       body {background-color: whitesmoke;}
@@ -46,7 +46,7 @@
 
         <br>
         
-        All time readings from {{water_stats.station_code}}
+        {{current_station.station_code }} - {{ current_station.station_description }}
         <br>
         <br>
         Water Level Readings
@@ -54,9 +54,14 @@
             <tr>
             </tr>
             <tr>
-                <td>Min level Reading</td>
+                <td>Min level Reading All Time</td>
                 <td>{{ water_stats.min_water_level_observed_date_alltime }}</td>
                 <td>{{ water_stats.min_water_level_alltime }}{{ water_stats.min_water_level_units_alltime }}</td>
+            </tr>
+            <tr>
+                <td>Min level Reading Last 10 Days</td>
+                <td>{{ water_stats.min_water_level_observed_date_10day }}</td>
+                <td>{{ water_stats.min_water_level_10day }}{{ water_stats.min_water_level_units_10day }}</td>
             </tr>
             <tr>
                 <td>Current Reading</td>
@@ -64,7 +69,12 @@
                 <td>{{ water_stats.current_water_level }}{{ water_stats.current_water_level_units }}</td>
             </tr>
             <tr>
-                <td>Max level Reading</td>
+                <td>Max level Reading Last 10 Days</td>
+                <td>{{ water_stats.max_water_level_observed_date_10day }}</td>
+                <td>{{ water_stats.max_water_level_10day }}{{ water_stats.max_water_level_units_10day }}</td>
+            </tr>
+            <tr>
+                <td>Max level Reading All Time</td>
                 <td>{{ water_stats.max_water_level_observed_date_alltime }}</td>
                 <td>{{ water_stats.max_water_level_alltime }}{{ water_stats.max_water_level_units_alltime }}</td>
             </tr>
@@ -77,9 +87,14 @@
             <tr>
             </tr>
             <tr>
-                <td>Min level Reading</td>
+                <td>Min Flow Reading All Time</td>
                 <td>{{ water_stats.min_water_flow_observed_date_alltime }}</td>
                 <td>{{ water_stats.min_water_flow_alltime }}{{ water_stats.min_water_flow_units_alltime }}</td>
+            </tr>
+            <tr>
+                <td>Min Flow Reading 10 Days</td>
+                <td>{{ water_stats.min_water_flow_observed_date_10day }}</td>
+                <td>{{ water_stats.min_water_flow_10day }}{{ water_stats.min_water_flow_units_10day }}</td>
             </tr>
             <tr>
                 <td>Current Reading</td>
@@ -87,7 +102,12 @@
                 <td>{{ water_stats.current_water_flow }}{{ water_stats.current_water_flow_units }}</td>
             </tr>
             <tr>
-                <td>Max level Reading</td>
+                <td>Max Flow Reading 10 Days</td>
+                <td>{{ water_stats.max_water_flow_observed_date_10day }}</td>
+                <td>{{ water_stats.max_water_flow_10day }}{{ water_stats.max_water_flow_units_10day }}</td>
+            </tr>
+            <tr>
+                <td>Max Flow Reading All Time</td>
                 <td>{{ water_stats.max_water_flow_observed_date_alltime }}</td>
                 <td>{{ water_stats.max_water_flow_alltime }}{{ water_stats.max_water_flow_units_alltime }}</td>
             </tr>

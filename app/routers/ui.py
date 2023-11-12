@@ -38,8 +38,11 @@ def get_ui(request: Request, scode: str, db: Session = Depends(get_db)):
 
     stations = db.query(models.Station).order_by(models.Station.id).all()
 
+    currentstation = db.query(models.Station).filter(models.Station.station_code == scode).first()
+    print(currentstation.station_code)
+
     return templates.TemplateResponse("WaterStats.html",
-                                      {"request": request, "water_stats": WaterStats, "station_list": stations })
+                                      {"request": request, "water_stats": WaterStats, "station_list": stations, "current_station":  currentstation})
 
 
 UiSubmitRouter = APIRouter(

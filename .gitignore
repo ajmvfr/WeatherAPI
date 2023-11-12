@@ -3,3 +3,4 @@ venv/
 .env
 weather-api-fastapi.service
 nginx
+test.py
