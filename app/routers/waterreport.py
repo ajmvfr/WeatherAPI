@@ -4,7 +4,7 @@ from typing import List, Optional
 from ..import models, schemas, oauth2, utilities
 from ..database import get_db
 from sqlalchemy import func
-from ..watercalc import GetWaterReport
+from ..watercalc import GetWaterReport, GetWaterFlowAverage
 
 
 
@@ -99,3 +99,24 @@ def get_WaterReport2(station_code: str, db: Session = Depends(get_db), current_u
                             detail=f"water readings with station code: {station_code} does not exist")
 
     return waterstats # {"get_WaterReport2": "test"}  #WaterReport
+
+WaterAverage = APIRouter(
+    prefix="/WaterAverage",
+    tags=['WaterLevel']
+)
+
+@WaterAverage.get("/{station_code}",  response_model=schemas.WaterAverages, response_model_exclude_none=True)
+def get_WaterAverage(station_code: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+
+    WaterAverage = GetWaterFlowAverage(station_code, db)
+
+    print(f'first----{WaterAverage}')
+
+    if not WaterAverage:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"water readings with station code: {station_code} does not exist")
+
+    print(f'second----{WaterAverage}')
+
+    return WaterAverage # {"get_WaterAverage": "test"}  
+

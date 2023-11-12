@@ -4,7 +4,7 @@ from typing import List, Optional
 from ..import models, schemas, oauth2, utilities
 from ..database import get_db
 from sqlalchemy import func
-from ..watercalc import GetWaterReport
+from ..watercalc import GetWaterReport, GetWaterFlowAverage
 
 from starlette.responses import RedirectResponse
 from starlette.templating import Jinja2Templates
@@ -39,10 +39,11 @@ def get_ui(request: Request, scode: str, db: Session = Depends(get_db)):
     stations = db.query(models.Station).order_by(models.Station.id).all()
 
     currentstation = db.query(models.Station).filter(models.Station.station_code == scode).first()
-    print(currentstation.station_code)
+
+    WaterAverage = GetWaterFlowAverage(scode, db)
 
     return templates.TemplateResponse("WaterStats.html",
-                                      {"request": request, "water_stats": WaterStats, "station_list": stations, "current_station":  currentstation})
+                                      {"request": request, "water_stats": WaterStats, "station_list": stations, "current_station":  currentstation, "water_average": WaterAverage})
 
 
 UiSubmitRouter = APIRouter(

@@ -135,3 +135,11 @@ class WaterStats(BaseModel):
         from_attributes = True
 
 
+class WaterAverages(BaseModel):
+    station_code: str
+    level_average: Optional[float]
+    flow_average: Optional[float]
+
+
+    class Config:
+        from_attributes = True

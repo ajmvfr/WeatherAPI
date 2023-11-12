@@ -21,6 +21,7 @@ app.include_router(waterreport.WaterLevelRouter)
 app.include_router(waterreport.WaterReport)
 app.include_router(waterreport.WaterReport2)
 app.include_router(waterreport.CurrentWaterReading)
+app.include_router(waterreport.WaterAverage)
 app.include_router(ui.UiRouter)
 app.include_router(ui.UiSubmitRouter)
 
