@@ -47,37 +47,7 @@
         <br>
         
         {{current_station.station_code }} - {{ current_station.station_description }}
-        <br>
-            <table>
-            <tr>
-                <th></th>
-                <th>Normal</th>
-                <th>ActionLevel</th>
-                <th>Minor Level</th>
-                <th>Moderate Level</th>
-                <th>Major Level</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>Water Level</td>
-                <td>{{water_average.level_average}}{{current_station.ActionLevelUnits}} *</td>
-                <td>{{ current_station.ActionLevel }}{{ current_station.ActionLevelUnits }}</td>
-                <td>{{ current_station.MinorLevel }}{{ current_station.MinorLevelUnits }}</td>
-                <td>{{ current_station.ModerateLevel }}{{ current_station.ModerateLevelUnits }}</td>
-                <td>{{ current_station.MajorLevel }}{{ current_station.MajorLevelUnits }}</td>
-            </tr>
-            <tr>
-                <td>Water Flow</td>
-                <td></td>
-                <!-- <td>{{water_average.flow_average}}{{current_station.ActionFlowUnits}} *</td> -->
-                <td>{{ current_station.ActionFlow }}{{ current_station.ActionFlowUnits }}</td>
-                <td>{{ current_station.MinorFlow }}{{ current_station.MinorFlowUnits }}</td>
-                <td>{{ current_station.ModerateFlow }}{{ current_station.ModerateFlowUnits }}</td>
-                <td>{{ current_station.MajorFlow }}{{ current_station.MajorFlowUnits }}</td>
-            </tr>
-        </table>
-        * Questionable calculation
-        <br>
+
         <br>
         <br>
         Water Level Readings
@@ -144,6 +114,39 @@
             </tr>
         </table>
 
+        <br>
+        <br>
+        <br>
+        <table>
+        <tr>
+            <th></th>
+            <th>Normal</th>
+            <th>ActionLevel</th>
+            <th>Minor Level</th>
+            <th>Moderate Level</th>
+            <th>Major Level</th>
+            <th></th>
+        </tr>
+        <tr>
+            <td>Water Level</td>
+            <td>{{water_average.level_average}}{{current_station.ActionLevelUnits}} *</td>
+            <td>{{ current_station.ActionLevel }}{{ current_station.ActionLevelUnits }}</td>
+            <td>{{ current_station.MinorLevel }}{{ current_station.MinorLevelUnits }}</td>
+            <td>{{ current_station.ModerateLevel }}{{ current_station.ModerateLevelUnits }}</td>
+            <td>{{ current_station.MajorLevel }}{{ current_station.MajorLevelUnits }}</td>
+        </tr>
+        <tr>
+            <td>Water Flow</td>
+            <td></td>
+            <!-- <td>{{water_average.flow_average}}{{current_station.ActionFlowUnits}} *</td> -->
+            <td>{{ current_station.ActionFlow }}{{ current_station.ActionFlowUnits }}</td>
+            <td>{{ current_station.MinorFlow }}{{ current_station.MinorFlowUnits }}</td>
+            <td>{{ current_station.ModerateFlow }}{{ current_station.ModerateFlowUnits }}</td>
+            <td>{{ current_station.MajorFlow }}{{ current_station.MajorFlowUnits }}</td>
+        </tr>
+    </table>
+    * Questionable calculation
+    <br>
         <!-- <table>
             <tr>
               <th>Station Code</th>
